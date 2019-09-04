@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tire Joist</string>
+    <string name="action_settings">Settings</string>
+    <string name="original_tire_size_title">Original</string>
+    <string name="new_tire_size_title">New</string>
+    <string name="tire_diameter_hint"><i>diameter</i></string>
+    <string name="use_metric_menu_item">Metric Units</string>
+    <string name="dark_theme_menu_item">Dark Theme</string>
+    <string name="use_imperial_menu_item">Imperial Units</string>
+    <string name="light_theme_menu_item">Light Theme</string>
+    <string name="correction_factor_prefix">Odometer / Speedometer Correction Factor:</string>
+    <string name="revolutions_per_mile_suffix"> rev/mile</string>
+    <string name="revolutions_per_kilometer_suffix"> rev/km</string>
+</resources>

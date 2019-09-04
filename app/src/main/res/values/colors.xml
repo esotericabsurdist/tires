@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accentColor">#2aac4b</color>
+
+    <!-- Mainly used for light theme -->
+    <color name="lightGrey">#DAB1AEAF</color>
+    <color name="slightlyDarkerGrey">#7A7777</color>
+
+    <!-- Mainly used for dark theme-->
+    <color name="darkGrey">#333232</color>
+    <color name="veryDarkBlack">#131212</color>
+    <color name="veryDarkGrey">#EB202020</color>
+
+</resources>

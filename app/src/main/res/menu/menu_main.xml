@@ -1,0 +1,21 @@
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.spaceshipfreehold.tirecorrector.TireUtilityActivity">
+    <item
+        android:id="@+id/metric_unit_item"
+        android:title="@string/use_metric_menu_item" />
+    <item
+        android:id="@+id/imperial_unit_item"
+        android:title="@string/use_imperial_menu_item" />
+
+    <item
+        android:id="@+id/dark_theme_item"
+        android:title="@string/dark_theme_menu_item" />
+
+    <item
+        android:id="@+id/light_theme_item"
+        android:title="@string/light_theme_menu_item" />
+
+
+
+</menu>
