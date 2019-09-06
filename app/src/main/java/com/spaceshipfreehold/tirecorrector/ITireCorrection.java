@@ -1,5 +1,7 @@
 package com.spaceshipfreehold.tirecorrector;
 
+import java.util.List;
+
 public interface ITireCorrection {
     interface Presenter{
         void onViewCreated();
@@ -17,5 +19,6 @@ public interface ITireCorrection {
         void setOriginalRevolutionsImperial(String revolutions);
         void setNewRevolutionsMetric(String revolutions);
         void setNewRevolutionsImperial(String revolutions);
+        void setCorrectionFactor(String correctionFactor);
     }
 }

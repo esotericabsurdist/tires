@@ -7,7 +7,7 @@
     <string name="tire_diameter_hint"><i>diameter</i></string>
     <string name="use_metric_menu_item">Metric Units</string>
     <string name="dark_theme_menu_item">Dark Theme</string>
-    <string name="use_imperial_menu_item">Imperial Units</string>
+    <string name="use_imperial_menu_item">Standard Units</string>
     <string name="light_theme_menu_item">Light Theme</string>
     <string name="correction_factor_prefix">Odometer / Speedometer Correction Factor:</string>
     <string name="revolutions_per_mile_suffix"> rev/mile</string>

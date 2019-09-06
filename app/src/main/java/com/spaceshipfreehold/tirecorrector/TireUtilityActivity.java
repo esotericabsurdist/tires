@@ -96,9 +96,7 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
     }
 
     @Override
-    public void setThemeDark() {
-        setTheme(R.style.SpaceshipFreeholdTheme_Dark);
-    }
+    public void setThemeDark() { setTheme(R.style.SpaceshipFreeholdTheme_Dark); }
 
     @Override
     public void setThemeLight() {

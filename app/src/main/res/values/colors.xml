@@ -3,7 +3,7 @@
     <color name="accentColor">#2aac4b</color>
 
     <!-- Mainly used for light theme -->
-    <color name="lightGrey">#DAB1AEAF</color>
+    <color name="lightGrey">#EBE7E9</color>
     <color name="slightlyDarkerGrey">#7A7777</color>
 
     <!-- Mainly used for dark theme-->

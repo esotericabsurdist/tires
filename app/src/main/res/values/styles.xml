@@ -1,8 +1,6 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="SpaceshipFreeholdTheme.Light" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/lightGrey</item>
         <item name="colorAccent">@color/accentColor</item>
         <item name="android:editTextBackground">@color/slightlyDarkerGrey</item>
@@ -14,7 +12,12 @@
         <item name="android:actionMenuTextColor">@color/veryDarkBlack</item>
         <item name="android:itemBackground">@color/lightGrey</item>
         <item name="android:itemTextAppearance">@color/veryDarkBlack</item>
+        <item name="tabStyle">@style/TabLayout.Light</item>
+    </style>
 
+    <style name ="TabLayout.Light" parent="Base.Widget.Design.TabLayout">
+        <item name="tabTextColor" >@color/veryDarkBlack</item>
+        <item name="android:background">@color/slightlyDarkerGrey</item>
     </style>
 
     <style name="SpaceshipFreeholdTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -27,6 +30,12 @@
         <item name="android:textColorHighlight">@color/accentColor</item>
         <item name="android:windowAnimationStyle">@style/windowAnimationTransition</item>
         <item name="android:itemBackground">@color/veryDarkGrey</item>
+        <item name="tabStyle">@style/TabLayout.Dark</item>
+    </style>
+
+    <style name ="TabLayout.Dark" parent="Base.Widget.Design.TabLayout">
+        <item name="tabTextColor" >@color/lightGrey</item>
+        <item name="android:background">@color/veryDarkGrey</item>
     </style>
 
     <style name="windowAnimationTransition">

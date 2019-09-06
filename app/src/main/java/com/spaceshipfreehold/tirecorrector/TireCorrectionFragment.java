@@ -1,14 +1,13 @@
 package com.spaceshipfreehold.tirecorrector;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
 
     TextView mOriginalRevolutionsPerUnitTextTextView;
     TextView mNewRevolutionsPerUnitTextTextView;
+    TextView mCorrectionFactorTextView;
     EditText mOriginalDiameterEditText;
     EditText mNewDiameterEditText;
 
@@ -57,6 +57,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
         mOriginalDiameterEditText.addTextChangedListener(new OriginalDiameterTextWatcher());
         mNewDiameterEditText = mRoot.findViewById(R.id.new_tire_diameter_edit_text);
         mNewDiameterEditText.addTextChangedListener(new NewDiameterTextWatcher());
+        mCorrectionFactorTextView = mRoot.findViewById(R.id.correction_factor_textview);
 
         mPresenter.onViewCreated();
         return mRoot;
@@ -118,6 +119,11 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
         mNewRevolutionsPerUnitTextTextView.append(" " + getResources().getString(R.string.revolutions_per_mile_suffix));
     }
 
+    @Override
+    public void setCorrectionFactor(String correctionFactor) {
+        mCorrectionFactorTextView.setText(correctionFactor);
+    }
+
     private class OriginalDiameterTextWatcher  implements TextWatcher {
 
         @Override
@@ -149,4 +155,5 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
             mPresenter.onNewDiameterEdited(s.toString());
         }
     }
+
 }
