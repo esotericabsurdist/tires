@@ -22,6 +22,7 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
     private double mOriginalTireRevolutions;
     private double mNewTireRevolutions;
     private double mCorrectionFactor;
+    private String mDiameterUnitString;
 
     TireCorrectionPresenter(@NonNull ITireModel model, @NonNull ITireCorrection.View view){
         mModel = model;
@@ -36,25 +37,31 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
 
         // Firstly, we must know how to compute figures for display.
         mMetricUnits = mModel.getUnitTypeMetric(false);
+        if(mMetricUnits){
+            mDiameterUnitString = " mm";
+        } else {
+            mDiameterUnitString = " in";
+        }
+
 
         // We persist only the tire diameters.
         mOriginalTireDiameter = mModel.getOriginalTireDiameter(0);
         mNewTireDiameter  = mModel.getNewTireDiameter(0);
 
-        // Compute everything else.
+        // Compute everything else and set it into the view.
+        mView.setDiameterInputUnitSuffix(mDiameterUnitString);
         mOriginalTireRevolutions = getRevolutionsPerUnit(mOriginalTireDiameter);
         mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
         mCorrectionFactor = getCorrectionFactor();
 
-        // Set data into view.
         mView.setCorrectionFactor(displayifyDecimalNumber(mCorrectionFactor));
         if(mOriginalTireDiameter > 0){
             // Use raw full value for diameters.
-            mView.setOriginalDiameter(String.valueOf(mOriginalTireDiameter));
+            mView.setOriginalDiameter(displayifyDecimalNumber(mOriginalTireDiameter) + mDiameterUnitString);
         }
 
         if(mNewTireDiameter > 0){
-            mView.setNewDiameter(String.valueOf(mNewTireDiameter));
+            mView.setNewDiameter(displayifyDecimalNumber(mNewTireDiameter) + mDiameterUnitString);
         }
 
         if(mMetricUnits){

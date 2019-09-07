@@ -20,5 +20,6 @@ public interface ITireCorrection {
         void setNewRevolutionsMetric(String revolutions);
         void setNewRevolutionsImperial(String revolutions);
         void setCorrectionFactor(String correctionFactor);
+        void setDiameterInputUnitSuffix(String suffix);
     }
 }

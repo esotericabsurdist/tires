@@ -1,7 +1,6 @@
 package com.spaceshipfreehold.tirecorrector;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +26,9 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
     EditText mOriginalDiameterEditText;
     EditText mNewDiameterEditText;
 
+    OriginalDiameterTextWatcher mOriginalDiameterTextWatcher;
+    NewDiameterTextWatcher mNewDiameterTextWatcher;
+
     public TireCorrectionFragment(){
         super();
     }
@@ -51,13 +53,20 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRoot = inflater.inflate(R.layout.tire_correction_factor_layout, container,false);
+
         mOriginalRevolutionsPerUnitTextTextView = mRoot.findViewById(R.id.original_revolutions_per_unit);
         mNewRevolutionsPerUnitTextTextView = mRoot.findViewById(R.id.new_revolutions_per_unit);
+
         mOriginalDiameterEditText = mRoot.findViewById(R.id.original_tire_diameter_edit_text);
-        mOriginalDiameterEditText.addTextChangedListener(new OriginalDiameterTextWatcher());
+        mOriginalDiameterTextWatcher = new OriginalDiameterTextWatcher();
+        mOriginalDiameterEditText.addTextChangedListener(mOriginalDiameterTextWatcher);
+
         mNewDiameterEditText = mRoot.findViewById(R.id.new_tire_diameter_edit_text);
-        mNewDiameterEditText.addTextChangedListener(new NewDiameterTextWatcher());
+        mNewDiameterTextWatcher = new NewDiameterTextWatcher();
+        mNewDiameterEditText.addTextChangedListener(mNewDiameterTextWatcher);
+
         mCorrectionFactorTextView = mRoot.findViewById(R.id.correction_factor_textview);
+
 
         mPresenter.onViewCreated();
         return mRoot;
@@ -124,36 +133,79 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
         mCorrectionFactorTextView.setText(correctionFactor);
     }
 
-    private class OriginalDiameterTextWatcher  implements TextWatcher {
+    @Override
+    public void setDiameterInputUnitSuffix(String suffix) {
+        mOriginalDiameterTextWatcher.setUnitSuffix(suffix);
+        mNewDiameterTextWatcher.setUnitSuffix(suffix);
+    }
+
+    private class OriginalDiameterTextWatcher implements TextWatcher {
+        private String mSuffix;
+
+        OriginalDiameterTextWatcher(){
+            mSuffix = "";
+        }
+
+        public void setUnitSuffix(String suffix){
+            mSuffix = suffix;
+        }
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            // Don't edit text here.
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // Don't edit text here.
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-            mPresenter.onOriginalDiameterEdited(s.toString());
+            if(s != null) {
+                String text = s.toString();
+                String diameter = text.replaceAll("[^0-9]", "");
+                mPresenter.onOriginalDiameterEdited(diameter);
+                mOriginalDiameterEditText.removeTextChangedListener(this);
+                mOriginalDiameterEditText.setText(diameter + mSuffix);
+                mOriginalDiameterEditText.setSelection(diameter.length());
+                mOriginalDiameterEditText.addTextChangedListener(this);
+            }
         }
     }
 
     private class NewDiameterTextWatcher implements TextWatcher {
+        private String mSuffix;
+
+        NewDiameterTextWatcher(){
+            mSuffix = "";
+        }
+
+        public void setUnitSuffix(String suffix){
+            mSuffix = suffix;
+        }
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            // Don't edit text here.
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // Don't edit text here.
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-            mPresenter.onNewDiameterEdited(s.toString());
+            if(s != null) {
+                String text = s.toString();
+                String diameter = text.replaceAll("[^0-9]", "");
+                mPresenter.onNewDiameterEdited(diameter);
+                mNewDiameterEditText.removeTextChangedListener(this);
+                mNewDiameterEditText.setText(diameter + mSuffix);
+                mNewDiameterEditText.setSelection(diameter.length());
+                mNewDiameterEditText.addTextChangedListener(this);
+            }
         }
     }
-
 }

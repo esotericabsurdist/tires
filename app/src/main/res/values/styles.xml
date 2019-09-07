@@ -1,41 +1,41 @@
 <resources>
 
     <style name="SpaceshipFreeholdTheme.Light" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/lightGrey</item>
+        <item name="android:windowBackground">@color/lightBackground</item>
         <item name="colorAccent">@color/accentColor</item>
-        <item name="android:editTextBackground">@color/slightlyDarkerGrey</item>
-        <item name="android:textColor">@color/veryDarkBlack</item>
-        <item name="android:textColorHint">@color/darkGrey</item>
+        <item name="android:editTextBackground">@color/lightEditTextBackground</item>
+        <item name="android:textColor">@color/darkBackGround</item>
+        <item name="android:textColorHint">@color/lightEditTextHint</item>
         <item name="android:textColorHighlight">@color/accentColor</item>
-        <item name="android:popupBackground">@color/lightGrey</item>
+        <item name="android:popupBackground">@color/lightBackground</item>
         <item name="android:windowAnimationStyle">@style/windowAnimationTransition</item>
-        <item name="android:actionMenuTextColor">@color/veryDarkBlack</item>
-        <item name="android:itemBackground">@color/lightGrey</item>
-        <item name="android:itemTextAppearance">@color/veryDarkBlack</item>
+        <item name="android:actionMenuTextColor">@color/lightText</item>
+        <item name="android:itemBackground">@color/lightBackground</item>
+        <item name="android:itemTextAppearance">@color/darkBackGround</item>
         <item name="tabStyle">@style/TabLayout.Light</item>
     </style>
 
     <style name ="TabLayout.Light" parent="Base.Widget.Design.TabLayout">
-        <item name="tabTextColor" >@color/veryDarkBlack</item>
-        <item name="android:background">@color/slightlyDarkerGrey</item>
+        <item name="tabTextColor" >@color/lightText</item>
+        <item name="android:background">@color/lightTabsBackGround</item>
     </style>
 
     <style name="SpaceshipFreeholdTheme.Dark" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:windowBackground">@color/veryDarkBlack</item>
+        <item name="android:windowBackground">@color/darkBackGround</item>
         <item name="colorAccent">@color/accentColor</item>
-        <item name="android:editTextBackground">@color/veryDarkGrey</item>
-        <item name="android:textColor">@color/lightGrey</item>
-        <item name="android:textColorHint">@color/darkGrey</item>
+        <item name="android:editTextBackground">@color/darkEditTextBackground</item>
+        <item name="android:textColor">@color/darkText</item>
+        <item name="android:textColorHint">@color/darkEditTextHint</item>
         <item name="android:textColorHighlight">@color/accentColor</item>
         <item name="android:windowAnimationStyle">@style/windowAnimationTransition</item>
-        <item name="android:itemBackground">@color/veryDarkGrey</item>
+        <item name="android:itemBackground">@color/darkEditTextBackground</item>
         <item name="tabStyle">@style/TabLayout.Dark</item>
     </style>
 
     <style name ="TabLayout.Dark" parent="Base.Widget.Design.TabLayout">
-        <item name="tabTextColor" >@color/lightGrey</item>
-        <item name="android:background">@color/veryDarkGrey</item>
+        <item name="tabTextColor" >@color/darkText</item>
+        <item name="android:background">@color/darkTabsBackGround</item>
     </style>
 
     <style name="windowAnimationTransition">

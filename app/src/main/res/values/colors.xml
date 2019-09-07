@@ -3,12 +3,17 @@
     <color name="accentColor">#2aac4b</color>
 
     <!-- Mainly used for light theme -->
-    <color name="lightGrey">#EBE7E9</color>
-    <color name="slightlyDarkerGrey">#7A7777</color>
+    <color name="lightEditTextHint">#333232</color>
+    <color name="lightBackground">#EBE7E9</color>
+    <color name="lightEditTextBackground">#928F8F</color>
+    <color name="lightTabsBackGround">#A7A3A3</color>
+    <color name="lightText">#000</color>
 
     <!-- Mainly used for dark theme-->
-    <color name="darkGrey">#333232</color>
-    <color name="veryDarkBlack">#131212</color>
-    <color name="veryDarkGrey">#EB202020</color>
+    <color name="darkEditTextHint">#333232</color>
+    <color name="darkBackGround">#131212</color>
+    <color name="darkEditTextBackground">#202020</color>
+    <color name="darkTabsBackGround">#464545</color>
+    <color name="darkText">#8F8D8D</color>
 
 </resources>
