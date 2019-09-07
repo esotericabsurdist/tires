@@ -1,5 +1,7 @@
 package com.spaceshipfreehold.tirecorrector;
 
+import android.util.Log;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -43,33 +45,36 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             mDiameterUnitString = " in";
         }
 
-
         // We persist only the tire diameters.
-        mOriginalTireDiameter = mModel.getOriginalTireDiameter(0);
-        mNewTireDiameter  = mModel.getNewTireDiameter(0);
-
+        if(mMetricUnits) {
+            mOriginalTireDiameter = mModel.getOriginalTireDiameter(0)*25.4;
+            mNewTireDiameter = mModel.getNewTireDiameter(0)*25.4;
+        } else {
+            mOriginalTireDiameter = mModel.getOriginalTireDiameter(0);
+            mNewTireDiameter = mModel.getNewTireDiameter(0);
+        }
         // Compute everything else and set it into the view.
         mView.setDiameterInputUnitSuffix(mDiameterUnitString);
         mOriginalTireRevolutions = getRevolutionsPerUnit(mOriginalTireDiameter);
         mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
         mCorrectionFactor = getCorrectionFactor();
 
-        mView.setCorrectionFactor(displayifyDecimalNumber(mCorrectionFactor));
+        mView.setCorrectionFactor(displayifyDecimalNumber(mCorrectionFactor,4));
         if(mOriginalTireDiameter > 0){
             // Use raw full value for diameters.
-            mView.setOriginalDiameter(displayifyDecimalNumber(mOriginalTireDiameter) + mDiameterUnitString);
+            mView.setOriginalDiameter(displayifyDecimalNumber(mOriginalTireDiameter,2) + mDiameterUnitString);
         }
 
         if(mNewTireDiameter > 0){
-            mView.setNewDiameter(displayifyDecimalNumber(mNewTireDiameter) + mDiameterUnitString);
+            mView.setNewDiameter(displayifyDecimalNumber(mNewTireDiameter,2) + mDiameterUnitString);
         }
 
         if(mMetricUnits){
-            mView.setOriginalRevolutionsMetric(displayifyDecimalNumber(mOriginalTireRevolutions));
-            mView.setNewRevolutionsMetric(displayifyDecimalNumber(mNewTireRevolutions));
+            mView.setOriginalRevolutionsMetric(displayifyDecimalNumber(mOriginalTireRevolutions,2));
+            mView.setNewRevolutionsMetric(displayifyDecimalNumber(mNewTireRevolutions,2));
         } else {
-            mView.setOriginalRevolutionsImperial(displayifyDecimalNumber(mOriginalTireRevolutions));
-            mView.setNewRevolutionsImperial(displayifyDecimalNumber(mNewTireRevolutions));
+            mView.setOriginalRevolutionsImperial(displayifyDecimalNumber(mOriginalTireRevolutions,2));
+            mView.setNewRevolutionsImperial(displayifyDecimalNumber(mNewTireRevolutions,2));
         }
 
     }
@@ -78,8 +83,15 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
     @Override
     public void onPaused() {
         // Persist data for app exit.
-        mModel.saveOriginalTireDiameter(mOriginalTireDiameter);
-        mModel.saveNewTireDiameter(mNewTireDiameter);
+        if(mMetricUnits){
+            // We only store data in freedom units.
+            mModel.saveOriginalTireDiameter(mOriginalTireDiameter/25.4);
+            mModel.saveNewTireDiameter(mNewTireDiameter/25.4);
+        } else {
+            // Already in standard/imperial.
+            mModel.saveOriginalTireDiameter(mOriginalTireDiameter);
+            mModel.saveNewTireDiameter(mNewTireDiameter);
+        }
     }
 
 
@@ -99,8 +111,10 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
         if(diameter <= 0){
             return 0;
         } else if(mMetricUnits){
-            return (1000/(diameter * Math.PI));
+            // rev per km given diameter in millimeters.
+            return (1000000/(diameter * Math.PI));
         } else {
+            // rev per mile given diameter in inches.
             return (5280/((diameter * Math.PI)/12));
         }
     }
@@ -119,8 +133,9 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
         }
     }
 
-    private String displayifyDecimalNumber(double number){
-        NumberFormat formatter = new DecimalFormat("#0.00");
+    private String displayifyDecimalNumber(double number, int digitsToRightOfDecimal){
+        String digits = new String(new char[digitsToRightOfDecimal]).replace('\0', '0');
+        NumberFormat formatter = new DecimalFormat("#0." + digits);
         return formatter.format(number);
     }
 
@@ -133,20 +148,20 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
                 // convert meters to inches
                 mOriginalTireDiameter = diameter / 2.54;
                 mOriginalTireRevolutions = getRevolutionsPerUnit(mOriginalTireDiameter);
-                mView.setOriginalRevolutionsMetric(displayifyDecimalNumber(mOriginalTireRevolutions));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor()));
+                mView.setOriginalRevolutionsMetric(displayifyDecimalNumber(mOriginalTireRevolutions,2));
+                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(),4));
             } else {
                 // treat as inches
                 mOriginalTireDiameter = diameter;
                 mOriginalTireRevolutions = getRevolutionsPerUnit(mOriginalTireDiameter);
-                mView.setOriginalRevolutionsImperial(displayifyDecimalNumber(mOriginalTireRevolutions));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor()));
+                mView.setOriginalRevolutionsImperial(displayifyDecimalNumber(mOriginalTireRevolutions,2));
+                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(),4));
             }
             mOriginalTireDiameter = diameter;
         } catch (NumberFormatException e){
             mOriginalTireDiameter = 0;
             mView.setOriginalRevolutionsMetric("0");
-            mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor()));
+            mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
         }
     }
 
@@ -159,19 +174,19 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
                 // convert meters to inches
                 mNewTireDiameter = diameter / 2.54f;
                 mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
-                mView.setNewRevolutionsMetric(displayifyDecimalNumber(mNewTireRevolutions));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor()));
+                mView.setNewRevolutionsMetric(displayifyDecimalNumber(mNewTireRevolutions, 2));
+                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
             } else {
                 // treat as inches
                 mNewTireDiameter = diameter;
                 mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
-                mView.setNewRevolutionsImperial(displayifyDecimalNumber(mNewTireRevolutions));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor()));
+                mView.setNewRevolutionsImperial(displayifyDecimalNumber(mNewTireRevolutions, 2));
+                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
             }
         } catch (NumberFormatException e){
             mNewTireDiameter = 0;
             mView.setNewRevolutionsMetric("0");
-            mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor()));
+            mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
         }
     }
 }

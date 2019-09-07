@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -164,7 +165,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
         public void afterTextChanged(Editable s) {
             if(s != null) {
                 String text = s.toString();
-                String diameter = text.replaceAll("[^0-9]", "");
+                String diameter = text.replaceAll("[^0-9.]", "");
                 mPresenter.onOriginalDiameterEdited(diameter);
                 mOriginalDiameterEditText.removeTextChangedListener(this);
                 mOriginalDiameterEditText.setText(diameter + mSuffix);
@@ -199,7 +200,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
         public void afterTextChanged(Editable s) {
             if(s != null) {
                 String text = s.toString();
-                String diameter = text.replaceAll("[^0-9]", "");
+                String diameter = text.replaceAll("[^0-9.]", "");
                 mPresenter.onNewDiameterEdited(diameter);
                 mNewDiameterEditText.removeTextChangedListener(this);
                 mNewDiameterEditText.setText(diameter + mSuffix);
