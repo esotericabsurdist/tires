@@ -22,7 +22,6 @@ public class TireUtilitiesModel implements ITireModel {
     @Override
     public int getRecentUtility(int defaultValue) {
         int position = TireUtilitiesSharedPreferences.getInstance(mContext).getRecentUtilitiesTabPosition(defaultValue);
-        Log.d("derp", "retrieving position " + position);
         return position;
     }
 
@@ -64,5 +63,35 @@ public class TireUtilitiesModel implements ITireModel {
     @Override
     public double getNewTireDiameter(double defaultValue) {
         return TireUtilitiesSharedPreferences.getInstance(mContext).getNewTireDiameter(defaultValue);
+    }
+
+    @Override
+    public void saveTireWidth(double width) {
+        TireUtilitiesSharedPreferences.getInstance(mContext).saveTireWidth(width);
+    }
+
+    @Override
+    public double getTireWidth(double defaultWidth) {
+        return TireUtilitiesSharedPreferences.getInstance(mContext).getTireWidth(defaultWidth);
+    }
+
+    @Override
+    public void saveAspectRatio(double aspectRatio) {
+        TireUtilitiesSharedPreferences.getInstance(mContext).saveAspectRatio(aspectRatio);
+    }
+
+    @Override
+    public double getAspectRatio(double defaultAspectRatio) {
+        return TireUtilitiesSharedPreferences.getInstance(mContext).getAspectRatio(defaultAspectRatio);
+    }
+
+    @Override
+    public void saveRimSize(double rimSize) {
+        TireUtilitiesSharedPreferences.getInstance(mContext).saveRimSize(rimSize);
+    }
+
+    @Override
+    public double getRimSize(double defaultRimSize) {
+        return TireUtilitiesSharedPreferences.getInstance(mContext).getRimSize(defaultRimSize);
     }
 }

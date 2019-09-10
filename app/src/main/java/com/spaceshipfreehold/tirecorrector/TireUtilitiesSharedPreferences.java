@@ -65,6 +65,33 @@ public class TireUtilitiesSharedPreferences {
         return mSharedPreferences.getBoolean(Constants.DARK_THEME, defaultValue);
     }
 
+    public void saveTireWidth(double width) {
+        mSharedPreferences.edit().putLong(Constants.TIRE_WIDTH, Double.doubleToRawLongBits(width)).apply();
+    }
+
+    public double getTireWidth(double defaultTireWidth){
+        long width = mSharedPreferences.getLong(Constants.TIRE_WIDTH, Double.doubleToRawLongBits(defaultTireWidth));
+        return Double.longBitsToDouble(width);
+    }
+
+    public void saveAspectRatio(double aspectRatio) {
+        mSharedPreferences.edit().putLong(Constants.ASPECT_RATIO, Double.doubleToRawLongBits(aspectRatio)).apply();
+    }
+
+    public double getAspectRatio(double defaultAspectRatio){
+        long aspectRatio = mSharedPreferences.getLong(Constants.ASPECT_RATIO, Double.doubleToRawLongBits(defaultAspectRatio));
+        return Double.longBitsToDouble(aspectRatio);
+    }
+
+    public void saveRimSize(double rimSize) {
+        mSharedPreferences.edit().putLong(Constants.RIM_SIZE, Double.doubleToRawLongBits(rimSize)).apply();
+    }
+
+    public double getRimSize(double defaultRimSize){
+        long rimSize = mSharedPreferences.getLong(Constants.RIM_SIZE, Double.doubleToRawLongBits(defaultRimSize));
+        return Double.longBitsToDouble(rimSize);
+    }
+
     private static class Constants {
         static String PREFERENCES_NAME = "TIRE_UTILITIES_SHARED_PREFERENCES";
         static String TAB_POSITION = "tab_position";
@@ -72,5 +99,8 @@ public class TireUtilitiesSharedPreferences {
         static String OLD_DIAMETER = "old_diameter";
         static String METRIC = "metric";
         static String DARK_THEME = "dark_theme";
+        static String TIRE_WIDTH = "tire_width";
+        static String ASPECT_RATIO = "aspect_ratio";
+        static String RIM_SIZE = "rim_size";
     }
 }

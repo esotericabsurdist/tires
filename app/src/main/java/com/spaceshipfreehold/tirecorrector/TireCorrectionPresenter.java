@@ -134,8 +134,24 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
 
     private String displayifyDecimalNumber(double number, int digitsToRightOfDecimal){
         String digits = new String(new char[digitsToRightOfDecimal]).replace('\0', '0');
-        NumberFormat formatter = new DecimalFormat("#0." + digits);
+        NumberFormat formatter = new DecimalFormat((Math.floor(number) == number && digitsToRightOfDecimal == 0) ? ("#0") : ("#0." + digits));
         return formatter.format(number);
+    }
+
+    boolean diameterExceedsRange(double lowerInches, double upperInches, boolean metricUnits, double diameter){
+        if(metricUnits){
+            if(diameter/25.4 > upperInches || diameter < lowerInches){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if(diameter > upperInches || diameter < 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     @Override
@@ -143,7 +159,10 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
         double diameter = 0;
         try {
             diameter = Double.valueOf(diameterString);
-            if (mMetricUnits) {
+            if(diameterExceedsRange(0, 10000, mMetricUnits, diameter)){
+                return;
+            }
+            else if (mMetricUnits) {
                 mOriginalTireDiameter = diameter;
                 mOriginalTireRevolutions = getRevolutionsPerUnit(mOriginalTireDiameter);
                 mView.setOriginalRevolutionsMetric(displayifyDecimalNumber(mOriginalTireRevolutions,2));
@@ -167,7 +186,10 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
         double diameter = 0;
         try {
             diameter = Double.valueOf(diameterString);
-            if (mMetricUnits) {
+            if(diameterExceedsRange(0, 10000, mMetricUnits, diameter)){
+                return;
+            }
+            else if (mMetricUnits) {
                 mNewTireDiameter = diameter;
                 mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
                 mView.setNewRevolutionsMetric(displayifyDecimalNumber(mNewTireRevolutions, 2));

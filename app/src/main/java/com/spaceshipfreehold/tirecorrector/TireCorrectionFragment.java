@@ -168,8 +168,8 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
                 String diameter = text.replaceAll("[^0-9.]", "");
                 mPresenter.onOriginalDiameterEdited(diameter);
                 mOriginalDiameterEditText.removeTextChangedListener(this);
-                mOriginalDiameterEditText.setText(diameter + mSuffix);
-                mOriginalDiameterEditText.setSelection(diameter.length());
+                mOriginalDiameterEditText.setText((diameter.length() == 0) ? "" : diameter + mSuffix);
+                mOriginalDiameterEditText.setSelection((diameter.length() == 0) ? 0 : diameter.length());
                 mOriginalDiameterEditText.addTextChangedListener(this);
             }
         }
@@ -203,8 +203,8 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
                 String diameter = text.replaceAll("[^0-9.]", "");
                 mPresenter.onNewDiameterEdited(diameter);
                 mNewDiameterEditText.removeTextChangedListener(this);
-                mNewDiameterEditText.setText(diameter + mSuffix);
-                mNewDiameterEditText.setSelection(diameter.length());
+                mNewDiameterEditText.setText((diameter.length() == 0) ? "" : diameter + mSuffix);
+                mNewDiameterEditText.setSelection((diameter.length() == 0) ? 0 : diameter.length());
                 mNewDiameterEditText.addTextChangedListener(this);
             }
         }

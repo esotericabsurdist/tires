@@ -47,4 +47,17 @@ public interface ITireModel {
     void saveNewTireDiameter(double diameter);
 
     double getNewTireDiameter(double defaultDiameter);
+
+    void saveTireWidth(double width);
+
+    double getTireWidth(double defaultWidth);
+
+    void saveAspectRatio(double aspectRatio);
+
+    double getAspectRatio(double defaultAspectRatio);
+
+    void saveRimSize(double rimSize);
+
+    double getRimSize(double defaultRimSize);
 }
+

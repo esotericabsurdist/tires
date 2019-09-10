@@ -4,11 +4,116 @@
     android:layout_height="match_parent"
     android:layout_gravity="center">
 
-    <TextView
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TODO: TIRE SIZE"
-        android:gravity="center"
-        />
+        android:layout_height="match_parent">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="50sp"
+                android:text="@string/nominal_width"
+                android:layout_weight="1"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="2sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="50sp"
+                android:text="@string/aspect_ratio"
+                android:layout_weight="1.5"
+                android:tooltipText="@string/aspect_ratio_tool_tip"
+                android:layout_marginLeft="2sp"
+                android:layout_marginRight="2sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="50sp"
+                android:text="@string/rim_size_r"
+                android:layout_weight="1"
+                android:layout_marginLeft="2sp"
+                android:layout_marginRight="5sp"
+                android:gravity="center"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/width_edit_text"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:layout_marginTop="5sp"
+                android:hint="@string/nominal_width_hint"
+                android:maxLength="8"
+                android:textAlignment="center"
+                android:ellipsize="start"
+                android:singleLine="true"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:imeOptions="actionNext"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="2sp"
+                android:gravity="center"/>
+
+            <EditText
+                android:id="@+id/aspect_ratio_edit_text"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:layout_marginTop="5sp"
+                android:hint="@string/aspect_ratio_hint"
+                android:maxLength="2"
+                android:textAlignment="center"
+                android:ellipsize="start"
+                android:singleLine="true"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:imeOptions="actionNext"
+                android:layout_marginLeft="2sp"
+                android:layout_marginRight="2sp"
+                android:gravity="center"/>
+
+            <EditText
+                android:id="@+id/rim_diameter_edit_text"
+                android:layout_width="0sp"
+                android:layout_height="40sp"
+                android:layout_marginLeft="2sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_weight="1"
+                android:ellipsize="start"
+                android:gravity="center"
+                android:hint="@string/rim_diameter_hint"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/computed_tire_size_text_view"
+                android:layout_width="0sp"
+                android:textSize="30sp"
+                android:layout_height="70sp"
+                android:layout_weight="1"
+                android:text="0.0 x 0.0 R 00"
+                android:tooltipText="@string/computed_size_tool_tip"
+                android:ellipsize="marquee"
+                android:layout_margin="5sp"
+                android:singleLine="true"
+                android:gravity="center"/>
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>
