@@ -13,7 +13,7 @@
         <item name="android:itemBackground">@color/lightBackground</item>
         <item name="android:itemTextAppearance">@color/darkBackGround</item>
         <item name="tabStyle">@style/TabLayout.Light</item>
-    </style>
+     </style>
 
     <style name ="TabLayout.Light" parent="Base.Widget.Design.TabLayout">
         <item name="tabTextColor" >@color/lightText</item>
@@ -21,7 +21,6 @@
     </style>
 
     <style name="SpaceshipFreeholdTheme.Dark" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/darkBackGround</item>
         <item name="colorAccent">@color/accentColor</item>
         <item name="android:editTextBackground">@color/darkEditTextBackground</item>
@@ -31,7 +30,7 @@
         <item name="android:windowAnimationStyle">@style/windowAnimationTransition</item>
         <item name="android:itemBackground">@color/darkEditTextBackground</item>
         <item name="tabStyle">@style/TabLayout.Dark</item>
-    </style>
+     </style>
 
     <style name ="TabLayout.Dark" parent="Base.Widget.Design.TabLayout">
         <item name="tabTextColor" >@color/darkText</item>

@@ -16,6 +16,10 @@
         android:id="@+id/light_theme_item"
         android:title="@string/light_theme_menu_item" />
 
+    <item
+        android:id="@+id/about_application_item"
+        android:title="@string/about" />
+
 
 
 </menu>

@@ -2,6 +2,9 @@ package com.spaceshipfreehold.tirecorrector;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -64,6 +67,7 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        // Prepare.
         mPresenter.onOptionsMenuPrepared();
         return true;
     }
@@ -79,9 +83,10 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
             mPresenter.darkThemeSelected();
         } else if (selectionId == R.id.light_theme_item){
             mPresenter.lightThemeSelected();
-        } else {
-            showToast("no option found");
+        } else if (selectionId == R.id.about_application_item) {
+            mPresenter.aboutOptionSelected();
         }
+
         return true;
     }
 
@@ -141,9 +146,16 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
         recreate();
     }
 
+    @Override
+    public void displayAboutMenu() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        DialogFragment aboutFragment = new AboutDialogFragment();
+        aboutFragment.show(fragmentManager, "About Fragment");
+    }
+
     private class UtilityChangeListener implements ViewPager.OnPageChangeListener {
         @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels){ }
 
         @Override
         public void onPageSelected(int position) {

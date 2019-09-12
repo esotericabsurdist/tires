@@ -1,7 +1,5 @@
 package com.spaceshipfreehold.tirecorrector;
 
-import java.util.List;
-
 public interface ITireUtility {
     interface Presenter{
         void onStarted();
@@ -11,6 +9,7 @@ public interface ITireUtility {
         void lightThemeSelected();
         void onUtilitySelected(int position);
         void onOptionsMenuPrepared();
+        void aboutOptionSelected();
     }
 
     interface View{
@@ -23,5 +22,6 @@ public interface ITireUtility {
         void enableImperialUnitsOption(boolean enabled);
         void enableMetricUnitsOption(boolean enabled);
         void recreateView();
+        void displayAboutMenu();
     }
 }

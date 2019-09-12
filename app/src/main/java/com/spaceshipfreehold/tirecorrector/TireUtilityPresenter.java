@@ -85,4 +85,9 @@ class TireUtilityPresenter implements ITireUtility.Presenter {
             mView.enableMetricUnitsOption(true);
         }
     }
+
+    @Override
+    public void aboutOptionSelected() {
+        mView.displayAboutMenu();
+    }
 }

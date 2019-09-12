@@ -176,7 +176,11 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             mOriginalTireDiameter = diameter;
         } catch (NumberFormatException e){
             mOriginalTireDiameter = 0;
-            mView.setOriginalRevolutionsMetric("0");
+            if(mMetricUnits) {
+                mView.setOriginalRevolutionsMetric("0");
+            } else {
+                mView.setNewRevolutionsImperial("0");
+            }
             mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
         }
     }
@@ -202,7 +206,11 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             }
         } catch (NumberFormatException e){
             mNewTireDiameter = 0;
-            mView.setNewRevolutionsMetric("0");
+            if(mMetricUnits) {
+                mView.setNewRevolutionsMetric("0");
+            } else {
+                mView.setNewRevolutionsImperial("0");
+            }
             mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
         }
     }
