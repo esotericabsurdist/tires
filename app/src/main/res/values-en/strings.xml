@@ -18,7 +18,7 @@
     <string name="nominal_width_hint">nominal width</string>
     <string name="rim_diameter_hint">diameter</string>
     <string name="aspect_ratio_hint">sidewall</string>
-    <string name="correction_factor_tool_tip">Multiply the indicated speed or mileage by correction factor to calculate actual value. This assumes the speedometer and odometer were perfectly accurate for the original tire size.</string>
+    <string name="correction_factor_tool_tip">Multiply the indicated speed or mileage by correction factor to calculate actual value.</string>
     <string name="aspect_ratio_tool_tip">Indicates the sidewall dimension as percentage of tire width. Typical values are between 10 and 90.</string>
     <string name="computed_size_tool_tip">Measured tire dimensions may differ from calculated.</string>
     <string name="about">About</string>

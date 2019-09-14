@@ -8,6 +8,7 @@
     <color name="lightEditTextBackground">#928F8F</color>
     <color name="lightTabsBackGround">#A7A3A3</color>
     <color name="lightText">#000</color>
+    <color name="lightTooltipBackground">#e6FFFFFF</color>
 
     <!-- Mainly used for dark theme-->
     <color name="darkEditTextHint">#333232</color>
@@ -15,5 +16,6 @@
     <color name="darkEditTextBackground">#202020</color>
     <color name="darkTabsBackGround">#464545</color>
     <color name="darkText">#8F8D8D</color>
+    <color name="darkTooltipBackground">#e6616161</color>
 
 </resources>

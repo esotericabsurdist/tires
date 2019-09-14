@@ -19,7 +19,7 @@ public class TireSizeFragment extends TireFragment implements ITireSize.View {
 
     private View mRoot;
     private ITireSize.Presenter mPresenter;
-
+    private String mTitle = "Size";
     private EditText mWidthEditText;
     private EditText mAspectRatioEditText;
     private EditText mRimSizeEditText;
@@ -32,7 +32,7 @@ public class TireSizeFragment extends TireFragment implements ITireSize.View {
 
     @Override
     public String getUtilityTitle() {
-        return getResources().getString(R.string.tire_size_utility_title);
+        return mTitle;
     }
 
     @Override
@@ -50,7 +50,6 @@ public class TireSizeFragment extends TireFragment implements ITireSize.View {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRoot = inflater.inflate(R.layout.tire_size_layout, container, false);
-
         mWidthEditText = mRoot.findViewById(R.id.width_edit_text);
         mWidthTextWatcher = new WidthTextWatcher();
         mWidthEditText.addTextChangedListener(mWidthTextWatcher);

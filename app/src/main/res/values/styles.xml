@@ -7,17 +7,17 @@
         <item name="android:textColor">@color/darkBackGround</item>
         <item name="android:textColorHint">@color/lightEditTextHint</item>
         <item name="android:textColorHighlight">@color/accentColor</item>
-        <item name="android:popupBackground">@color/lightBackground</item>
         <item name="android:windowAnimationStyle">@style/windowAnimationTransition</item>
         <item name="android:actionMenuTextColor">@color/lightText</item>
         <item name="android:itemBackground">@color/lightBackground</item>
         <item name="android:itemTextAppearance">@color/darkBackGround</item>
         <item name="tabStyle">@style/TabLayout.Light</item>
+        <item name="tooltipForegroundColor">@color/lightTooltipBackground</item>
      </style>
 
     <style name ="TabLayout.Light" parent="Base.Widget.Design.TabLayout">
         <item name="tabTextColor" >@color/lightText</item>
-        <item name="android:background">@color/lightTabsBackGround</item>
+        <item name="tabBackground">@color/lightTabsBackGround</item>
     </style>
 
     <style name="SpaceshipFreeholdTheme.Dark" parent="Theme.AppCompat.NoActionBar">
@@ -30,11 +30,12 @@
         <item name="android:windowAnimationStyle">@style/windowAnimationTransition</item>
         <item name="android:itemBackground">@color/darkEditTextBackground</item>
         <item name="tabStyle">@style/TabLayout.Dark</item>
-     </style>
+        <item name="tooltipForegroundColor">@color/darkTooltipBackground</item>
+    </style>
 
     <style name ="TabLayout.Dark" parent="Base.Widget.Design.TabLayout">
         <item name="tabTextColor" >@color/darkText</item>
-        <item name="android:background">@color/darkTabsBackGround</item>
+        <item name="tabBackground">@color/darkTabsBackGround</item>
     </style>
 
     <style name="windowAnimationTransition">

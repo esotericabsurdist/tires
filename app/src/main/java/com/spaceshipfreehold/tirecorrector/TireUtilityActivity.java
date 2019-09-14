@@ -64,8 +64,6 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
         mPresenter.onStarted();
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

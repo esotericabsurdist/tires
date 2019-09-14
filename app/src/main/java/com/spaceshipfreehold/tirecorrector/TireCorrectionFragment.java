@@ -19,7 +19,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
 
     View mRoot;
     ITireCorrection.Presenter mPresenter;
-
+    String mTitle = "Correction";
     TextView mOriginalRevolutionsPerUnitTextTextView;
     TextView mNewRevolutionsPerUnitTextTextView;
     TextView mCorrectionFactorTextView;
@@ -35,7 +35,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
 
     @Override
     public String getUtilityTitle() {
-        return getResources().getString(R.string.tire_correction_utility_title);
+        return mTitle;
     }
 
     @Override
@@ -53,7 +53,6 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRoot = inflater.inflate(R.layout.tire_correction_factor_layout, container,false);
-
         mOriginalRevolutionsPerUnitTextTextView = mRoot.findViewById(R.id.original_revolutions_per_unit);
         mNewRevolutionsPerUnitTextTextView = mRoot.findViewById(R.id.new_revolutions_per_unit);
 

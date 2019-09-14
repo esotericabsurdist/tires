@@ -27,7 +27,7 @@ public class TireUtilityAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return (Fragment) mFragments.get(position);
+        return mFragments.get(position);
     }
 
     @Nullable
