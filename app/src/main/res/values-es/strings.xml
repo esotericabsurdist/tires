@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tire Joist</string>
+    <string name="action_settings">Configuraciones</string>
+    <string name="original_tire_size_title">Original</string>
+    <string name="new_tire_size_title">Nuevo</string>
+    <string name="tire_diameter_hint"><i>diámetro</i></string>
+    <string name="use_metric_menu_item">Unidades Metricas</string>
+    <string name="dark_theme_menu_item">Colores Oscuros</string>
+    <string name="use_imperial_menu_item">Unidades Estándar</string>
+    <string name="light_theme_menu_item">Colores Claros</string>
+    <string name="correction_factor_prefix">Cuentakilómetros / velocímetro Corrección:</string>
+    <string name="revolutions_per_mile_suffix"> rev/milla</string>
+    <string name="revolutions_per_kilometer_suffix"> rev/km</string>
+    <string name="nominal_width">Anchura</string>
+    <string name="aspect_ratio">Relación de Aspecto</string>
+    <string name="rim_size_r">Llanta</string>
+    <string name="nominal_width_hint">ancho</string>
+    <string name="rim_diameter_hint">diámetro</string>
+    <string name="aspect_ratio_hint">lado</string>
+    <string name="correction_factor_tool_tip">Multiplique su velocidad o distancia por este valor para determinar su velocidad o distancia real con los neumáticos nuevos.</string>
+    <string name="aspect_ratio_tool_tip">Esto indica la dimensión de la pared lateral como porcentaje del ancho del neumático.</string>
+    <string name="computed_size_tool_tip">Las dimensiones medidas de los neumáticos pueden diferir de las calculadas.</string>
+    <string name="about">Sobre</string>
+    <string name="app_developer_name_version">Tire Joist</string>
+    <string name="source_code_location">El código de la aplicación se puede encontrar</string>
+    <string name="contact_me">Contáctame con ideas o sugerencias</string>
+    <string name="here_text">aquí</string>
+    <string name="send_email_intent_chooser_title">Escribe Email</string>
+    <string name="choose_browser_intent_title">Navegador</string>
+    <string name="tire_size_utility_title">Tamaño</string>
+    <string name="tire_correction_utility_title">Corrección</string>
+</resources>

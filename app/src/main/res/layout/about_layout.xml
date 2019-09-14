@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/lightEditTextBackground"
+    android:background="@color/darkBackGround"
 
     >
 
@@ -16,7 +16,7 @@
         android:textStyle="bold"
         android:singleLine="true"
         android:textColor="@color/darkText"
-        android:background="@color/darkBackGround"
+        android:background="@color/darkTabsBackGround"
         android:text="@string/app_name" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:textSize="20sp"
         android:text="placeholder"
         android:singleLine="false"
-        android:textColor="@color/lightText"
+        android:textColor="@color/darkText"
         android:linksClickable="true"
         android:textColorHighlight="@color/ap_transparent"
         />

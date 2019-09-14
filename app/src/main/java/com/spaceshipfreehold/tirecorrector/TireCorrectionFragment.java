@@ -18,7 +18,6 @@ import android.widget.Toast;
 public class TireCorrectionFragment extends TireFragment implements ITireCorrection.View{
 
     View mRoot;
-    String mTitle = "Correction";
     ITireCorrection.Presenter mPresenter;
 
     TextView mOriginalRevolutionsPerUnitTextTextView;
@@ -36,7 +35,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
 
     @Override
     public String getUtilityTitle() {
-        return mTitle;
+        return getResources().getString(R.string.tire_correction_utility_title);
     }
 
     @Override

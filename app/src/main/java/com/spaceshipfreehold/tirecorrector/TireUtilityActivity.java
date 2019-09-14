@@ -1,5 +1,8 @@
 package com.spaceshipfreehold.tirecorrector;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +18,8 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Locale;
+
 public class TireUtilityActivity extends AppCompatActivity implements ITireUtility.View{
 
     private ITireUtility.Presenter mPresenter;
@@ -27,6 +32,7 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mPresenter = new TireUtilityPresenter(new TireUtilitiesModel(this), this);
 
         setContentView(R.layout.activity_main);
@@ -57,6 +63,8 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
 
         mPresenter.onStarted();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

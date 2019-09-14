@@ -8,7 +8,7 @@
     <string name="dark_theme_menu_item">Dark Theme</string>
     <string name="use_imperial_menu_item">Standard Units</string>
     <string name="light_theme_menu_item">Light Theme</string>
-    <string name="correction_factor_prefix">Speedometer, Odometer Correction Factor:</string>
+    <string name="correction_factor_prefix">Speedometer / Odometer Correction Factor:</string>
     <string name="revolutions_per_mile_suffix"> rev/mile</string>
     <string name="revolutions_per_kilometer_suffix"> rev/km</string>
     <string name="nominal_width">Width</string>
@@ -25,5 +25,9 @@
     <string name="source_code_location">Source code can be found</string>
     <string name="contact_me">For requests, thoughts, suggestions, complaints, or odd ideas, feel free to contact me</string>
     <string name="here_text">here</string>
+    <string name="send_email_intent_chooser_title">Compose Email</string>
+    <string name="choose_browser_intent_title">Choose Browser</string>
+    <string name="tire_size_utility_title">Size</string>
+    <string name="tire_correction_utility_title">Correction</string>
 
 </resources>

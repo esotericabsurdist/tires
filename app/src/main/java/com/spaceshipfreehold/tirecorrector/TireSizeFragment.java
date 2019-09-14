@@ -18,7 +18,6 @@ import android.widget.Toast;
 public class TireSizeFragment extends TireFragment implements ITireSize.View {
 
     private View mRoot;
-    private String mTitle = "Size";
     private ITireSize.Presenter mPresenter;
 
     private EditText mWidthEditText;
@@ -33,7 +32,7 @@ public class TireSizeFragment extends TireFragment implements ITireSize.View {
 
     @Override
     public String getUtilityTitle() {
-        return mTitle;
+        return getResources().getString(R.string.tire_size_utility_title);
     }
 
     @Override
