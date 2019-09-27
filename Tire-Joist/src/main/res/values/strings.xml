@@ -17,13 +17,13 @@
     <string name="nominal_width_hint">nominal width</string>
     <string name="rim_diameter_hint">diameter</string>
     <string name="aspect_ratio_hint">sidewall</string>
-    <string name="correction_factor_tool_tip">Multiply the indicated speed or mileage by correction factor to calculate actual value.</string>
+    <string name="correction_factor_tool_tip">Multiply your indicated speed or mileage by correction factor to determine real value.</string>
     <string name="aspect_ratio_tool_tip">Indicates the sidewall dimension as percentage of tire width. Typical values are between 10 and 90.</string>
     <string name="computed_size_tool_tip">Measured tire dimensions may differ from calculated.</string>
     <string name="about">About</string>
     <string name="app_developer_name_version">Tire Joist</string>
     <string name="source_code_location">Source code can be found</string>
-    <string name="contact_me">For requests, thoughts, suggestions, complaints, or odd ideas, feel free to contact me</string>
+    <string name="contact_me">For requests, complaints, thoughts, or just odd ideas, feel free to contact me</string>
     <string name="here_text">here</string>
     <string name="send_email_intent_chooser_title">Compose Email</string>
     <string name="choose_browser_intent_title">Choose Browser</string>

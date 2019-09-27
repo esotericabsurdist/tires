@@ -29,6 +29,7 @@
         android:text="placeholder"
         android:singleLine="false"
         android:textColor="@color/darkText"
+        android:background="@color/darkBackGround"
         android:linksClickable="true"
         android:textColorHighlight="@color/ap_transparent"
         />
