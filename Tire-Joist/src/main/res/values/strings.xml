@@ -29,5 +29,9 @@
     <string name="choose_browser_intent_title">Choose Browser</string>
     <string name="tire_size_utility_title">Size</string>
     <string name="tire_correction_utility_title">Correction</string>
+    <string name="radius_delta_A">Radius \u0394 A:</string>
+    <string name="half_width_delta_B">Half-Width \u0394 B:</string>
+    <string name="new_title">New</string>
+    <string name="original_title">Original</string>
 
 </resources>

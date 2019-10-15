@@ -30,4 +30,8 @@
     <string name="choose_browser_intent_title">Navegador</string>
     <string name="tire_size_utility_title">Tamaño</string>
     <string name="tire_correction_utility_title">Corrección</string>
+    <string name="radius_delta_A">Radio \u0394 A:</string>
+    <string name="half_width_delta_B">Medio Ancho \u0394 B:</string>
+    <string name="new_title">Nuevo</string>
+    <string name="original_title">Original</string>
 </resources>
