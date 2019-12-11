@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
 
     View mRoot;
     ITireCorrection.Presenter mPresenter;
-    String mTitle = "Correction";
     TextView mOriginalRevolutionsPerUnitTextTextView;
     TextView mNewRevolutionsPerUnitTextTextView;
     TextView mCorrectionFactorTextView;
@@ -35,12 +33,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
 
     @Override
     public String getUtilityTitle() {
-        return mTitle;
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
+        return "Correction";
     }
 
     @Override

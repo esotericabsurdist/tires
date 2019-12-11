@@ -27,6 +27,7 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
     private ViewPager mViewPager;
     private TireCorrectionFragment mTireCorrectionFragment;
     private TireSizeFragment mTireSizeFragment;
+    private IdealAxleRatioFragment mIdealAxleRatioFragment;
     private TireFitmentFragment mTireFitmentFragment;
     private Menu mOptionsMenu;
 
@@ -56,12 +57,14 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
         // Simple.
         mTireCorrectionFragment = new TireCorrectionFragment();
         mTireSizeFragment = new TireSizeFragment();
-        mTireFitmentFragment = new TireFitmentFragment();
+        mIdealAxleRatioFragment = new IdealAxleRatioFragment();
+        //mTireFitmentFragment = new TireFitmentFragment();
 
         // Give our viewpager references to our associated fragments to display.
         mUtilitiesAdapter.addUtility(mTireCorrectionFragment);
         mUtilitiesAdapter.addUtility(mTireSizeFragment);
-        mUtilitiesAdapter.addUtility(mTireFitmentFragment);
+
+        //mUtilitiesAdapter.addUtility(mTireFitmentFragment);
         mUtilitiesAdapter.notifyDataSetChanged(); // required when adding or removing fragments.
 
         mPresenter.onStarted();
