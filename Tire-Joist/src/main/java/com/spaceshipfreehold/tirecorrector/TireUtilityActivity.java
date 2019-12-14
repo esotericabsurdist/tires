@@ -63,6 +63,7 @@ public class TireUtilityActivity extends AppCompatActivity implements ITireUtili
         // Give our viewpager references to our associated fragments to display.
         mUtilitiesAdapter.addUtility(mTireCorrectionFragment);
         mUtilitiesAdapter.addUtility(mTireSizeFragment);
+        mUtilitiesAdapter.addUtility(mIdealAxleRatioFragment);
 
         //mUtilitiesAdapter.addUtility(mTireFitmentFragment);
         mUtilitiesAdapter.notifyDataSetChanged(); // required when adding or removing fragments.

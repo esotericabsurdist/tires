@@ -131,7 +131,7 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
         mNewDiameterTextWatcher.setUnitSuffix(suffix);
     }
 
-    private class OriginalDiameterTextWatcher implements TextWatcher {
+    private class OriginalDiameterTextWatcher extends SimpleTextWatcher {
         private String mSuffix;
 
         OriginalDiameterTextWatcher(){
@@ -142,15 +142,6 @@ public class TireCorrectionFragment extends TireFragment implements ITireCorrect
             mSuffix = suffix;
         }
 
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            // Don't edit text here.
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Don't edit text here.
-        }
 
         @Override
         public void afterTextChanged(Editable s) {

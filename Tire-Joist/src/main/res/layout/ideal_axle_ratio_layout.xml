@@ -14,7 +14,7 @@
             <TextView
                 android:layout_width="0sp"
                 android:layout_height="50sp"
-                android:text="@string/nominal_width"
+                android:text="@string/original_tire_size_title"
                 android:layout_weight="1"
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="2sp"
@@ -23,7 +23,7 @@
             <TextView
                 android:layout_width="0sp"
                 android:layout_height="50sp"
-                android:text="@string/aspect_ratio"
+                android:text="@string/new_tire_size_title"
                 android:layout_weight="1.5"
                 android:tooltipText="@string/aspect_ratio_tool_tip"
                 android:layout_marginLeft="2sp"
@@ -33,7 +33,7 @@
             <TextView
                 android:layout_width="0sp"
                 android:layout_height="50sp"
-                android:text="@string/rim_size_r"
+                android:text="@string/original_ring_and_pinion_ratio"
                 android:layout_weight="1"
                 android:layout_marginLeft="2sp"
                 android:layout_marginRight="5sp"
@@ -49,7 +49,7 @@
                 android:layout_width="0sp"
                 android:layout_height="40sp"
                 android:layout_marginTop="5sp"
-                android:hint="@string/nominal_width_hint"
+                android:hint="@string/tire_diameter_hint"
                 android:maxLength="8"
                 android:textAlignment="center"
                 android:ellipsize="start"
@@ -62,11 +62,11 @@
                 android:gravity="center"/>
 
             <EditText
-                android:id="@+id/ideal_ratio_original_ring_and_pinion_ratio"
+                android:id="@+id/ideal_ratio_new_tire_diameter_edit_text"
                 android:layout_width="0sp"
                 android:layout_height="40sp"
                 android:layout_marginTop="5sp"
-                android:hint="@string/aspect_ratio_hint"
+                android:hint="@string/tire_diameter_hint"
                 android:maxLength="2"
                 android:textAlignment="center"
                 android:ellipsize="start"
@@ -79,12 +79,13 @@
                 android:gravity="center"/>
 
             <EditText
-                android:id="@+id/ideal_ratio_new_tire_diameter_edit_text"
+                android:id="@+id/ideal_ratio_original_ring_and_pinion_ratio"
                 android:layout_width="0sp"
                 android:layout_height="40sp"
                 android:layout_marginLeft="2sp"
                 android:layout_marginTop="5sp"
                 android:layout_marginRight="5sp"
+                android:hint="@string/r_and_p_ratio_hint"
                 android:layout_weight="1"
                 android:ellipsize="start"
                 android:gravity="center"

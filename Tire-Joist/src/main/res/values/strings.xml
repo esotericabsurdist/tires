@@ -33,5 +33,7 @@
     <string name="half_width_delta_B">Half-Width \u0394 B:</string>
     <string name="new_title">New</string>
     <string name="original_title">Original</string>
+    <string name="original_ring_and_pinion_ratio"><![CDATA[R&P]]></string>
+    <string name="r_and_p_ratio_hint">Ratio</string>
 
 </resources>
