@@ -3,6 +3,7 @@ package com.spaceshipfreehold.tirecorrector;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,10 +128,10 @@ public class IdealAxleRatioFragment extends TireFragment implements IIdealAxleRa
                 String text = s.toString();
                 String diameter = text.replaceAll("[^0-9.]", "");
                 mPresenter.onNewTireDiameterEdited(diameter);
-                mOriginalDiameterEditText.removeTextChangedListener(this);
-                mOriginalDiameterEditText.setText((diameter.length() == 0) ? "" : diameter + mSuffix);
-                mOriginalDiameterEditText.setSelection((diameter.length() == 0) ? 0 : diameter.length());
-                mOriginalDiameterEditText.addTextChangedListener(this);
+                mNewTireDiameterEditText.removeTextChangedListener(this);
+                mNewTireDiameterEditText.setText((diameter.length() == 0) ? "" : diameter + mSuffix);
+                mNewTireDiameterEditText.setSelection((diameter.length() == 0) ? 0 : diameter.length());
+                mNewTireDiameterEditText.addTextChangedListener(this);
             }
         }
     }

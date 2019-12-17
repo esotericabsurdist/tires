@@ -67,7 +67,7 @@
                 android:layout_height="40sp"
                 android:layout_marginTop="5sp"
                 android:hint="@string/tire_diameter_hint"
-                android:maxLength="2"
+                android:maxLength="8"
                 android:textAlignment="center"
                 android:ellipsize="start"
                 android:singleLine="true"
@@ -108,6 +108,7 @@
                 android:layout_weight="1"
                 android:text="Ideal Ratio:"
                 android:ellipsize="marquee"
+                android:tooltipText="@string/ideal_ratio_tool_tip_text"
                 android:layout_margin="5sp"
                 android:singleLine="true"
                 android:gravity="center"/>

@@ -36,5 +36,6 @@
     <string name="original_title">Original</string>
     <string name="original_ring_and_pinion_ratio"><![CDATA[R&P]]></string>
     <string name="r_and_p_ratio_hint">Ratio</string>
+    <string name="ideal_ratio_tool_tip_text">The ideal ratio is will produce the same final drive ratio as the original tire size and ratio.</string>
 
 </resources>

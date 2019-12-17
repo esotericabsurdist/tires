@@ -36,14 +36,12 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
 
     @Override
     public void onViewStarted() {
-
-        // Firstly, we must know how to compute figures for display.
-        // TODO: Organize method calls into if-else for metric or non metric set up.
+         // TODO: Organize method calls into if-else for metric or non metric set up.
         mMetricUnits = mModel.getUnitTypeMetric(false);
         if(mMetricUnits){
-            mDiameterUnitString = " mm";
+            mDiameterUnitString = TireJoist.METRIC_UNITS_SUFFIX;
         } else {
-            mDiameterUnitString = " in";
+            mDiameterUnitString = TireJoist.IMPERIAL_UNITS_SUFFIX;
         }
 
         // We persist only the tire diameters.
@@ -60,22 +58,22 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
         mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
         mCorrectionFactor = getCorrectionFactor();
 
-        mView.setCorrectionFactor(displayifyDecimalNumber(mCorrectionFactor,4));
+        mView.setCorrectionFactor(Utils.displayifyDecimalNumber(mCorrectionFactor,4));
         if(mOriginalTireDiameter > 0){
             // Use raw full value for diameters.
-            mView.setOriginalDiameter(displayifyDecimalNumber(mOriginalTireDiameter,2) + mDiameterUnitString);
+            mView.setOriginalDiameter(Utils.displayifyDecimalNumber(mOriginalTireDiameter,2) + mDiameterUnitString);
         }
 
         if(mNewTireDiameter > 0){
-            mView.setNewDiameter(displayifyDecimalNumber(mNewTireDiameter,2) + mDiameterUnitString);
+            mView.setNewDiameter(Utils.displayifyDecimalNumber(mNewTireDiameter,2) + mDiameterUnitString);
         }
 
         if(mMetricUnits){
-            mView.setOriginalRevolutionsMetric(displayifyDecimalNumber(mOriginalTireRevolutions,2));
-            mView.setNewRevolutionsMetric(displayifyDecimalNumber(mNewTireRevolutions,2));
+            mView.setOriginalRevolutionsMetric(Utils.displayifyDecimalNumber(mOriginalTireRevolutions,2));
+            mView.setNewRevolutionsMetric(Utils.displayifyDecimalNumber(mNewTireRevolutions,2));
         } else {
-            mView.setOriginalRevolutionsImperial(displayifyDecimalNumber(mOriginalTireRevolutions,2));
-            mView.setNewRevolutionsImperial(displayifyDecimalNumber(mNewTireRevolutions,2));
+            mView.setOriginalRevolutionsImperial(Utils.displayifyDecimalNumber(mOriginalTireRevolutions,2));
+            mView.setNewRevolutionsImperial(Utils.displayifyDecimalNumber(mNewTireRevolutions,2));
         }
 
     }
@@ -92,18 +90,6 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             mModel.saveOriginalTireDiameter(mOriginalTireDiameter);
             mModel.saveNewTireDiameter(mNewTireDiameter);
         }
-    }
-
-    private List<Number> getLinearRange(double slope, double step, double lowerBound, double upperBound) {
-        List<Number> out = new ArrayList<>();
-        if(lowerBound < upperBound) {
-            double x = lowerBound;
-            while (x <= upperBound) {
-                out.add(x*slope);
-                x += step;
-            }
-        }
-        return out;
     }
 
     private double getRevolutionsPerUnit(double diameter){
@@ -130,12 +116,6 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
         } else {
             return 0;
         }
-    }
-
-    private String displayifyDecimalNumber(double number, int digitsToRightOfDecimal){
-        String digits = new String(new char[digitsToRightOfDecimal]).replace('\0', '0');
-        NumberFormat formatter = new DecimalFormat((Math.floor(number) == number && digitsToRightOfDecimal == 0) ? ("#0") : ("#0." + digits));
-        return formatter.format(number);
     }
 
     boolean diameterExceedsRange(double lowerInches, double upperInches, boolean metricUnits, double diameter){
@@ -165,13 +145,13 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             else if (mMetricUnits) {
                 mOriginalTireDiameter = diameter;
                 mOriginalTireRevolutions = getRevolutionsPerUnit(mOriginalTireDiameter);
-                mView.setOriginalRevolutionsMetric(displayifyDecimalNumber(mOriginalTireRevolutions,2));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(),4));
+                mView.setOriginalRevolutionsMetric(Utils.displayifyDecimalNumber(mOriginalTireRevolutions,2));
+                mView.setCorrectionFactor(Utils.displayifyDecimalNumber(getCorrectionFactor(),4));
             } else {
                 mOriginalTireDiameter = diameter;
                 mOriginalTireRevolutions = getRevolutionsPerUnit(mOriginalTireDiameter);
-                mView.setOriginalRevolutionsImperial(displayifyDecimalNumber(mOriginalTireRevolutions,2));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(),4));
+                mView.setOriginalRevolutionsImperial(Utils.displayifyDecimalNumber(mOriginalTireRevolutions,2));
+                mView.setCorrectionFactor(Utils.displayifyDecimalNumber(getCorrectionFactor(),4));
             }
             mOriginalTireDiameter = diameter;
         } catch (NumberFormatException e){
@@ -181,7 +161,7 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             } else {
                 mView.setNewRevolutionsImperial("0");
             }
-            mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
+            mView.setCorrectionFactor(Utils.displayifyDecimalNumber(getCorrectionFactor(), 4));
         }
     }
 
@@ -196,13 +176,13 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             else if (mMetricUnits) {
                 mNewTireDiameter = diameter;
                 mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
-                mView.setNewRevolutionsMetric(displayifyDecimalNumber(mNewTireRevolutions, 2));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
+                mView.setNewRevolutionsMetric(Utils.displayifyDecimalNumber(mNewTireRevolutions, 2));
+                mView.setCorrectionFactor(Utils.displayifyDecimalNumber(getCorrectionFactor(), 4));
             } else {
                 mNewTireDiameter = diameter;
                 mNewTireRevolutions = getRevolutionsPerUnit(mNewTireDiameter);
-                mView.setNewRevolutionsImperial(displayifyDecimalNumber(mNewTireRevolutions, 2));
-                mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
+                mView.setNewRevolutionsImperial(Utils.displayifyDecimalNumber(mNewTireRevolutions, 2));
+                mView.setCorrectionFactor(Utils.displayifyDecimalNumber(getCorrectionFactor(), 4));
             }
         } catch (NumberFormatException e){
             mNewTireDiameter = 0;
@@ -211,7 +191,7 @@ class TireCorrectionPresenter implements ITireCorrection.Presenter {
             } else {
                 mView.setNewRevolutionsImperial("0");
             }
-            mView.setCorrectionFactor(displayifyDecimalNumber(getCorrectionFactor(), 4));
+            mView.setCorrectionFactor(Utils.displayifyDecimalNumber(getCorrectionFactor(), 4));
         }
     }
 }

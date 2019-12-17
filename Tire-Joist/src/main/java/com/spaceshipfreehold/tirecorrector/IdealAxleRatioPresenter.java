@@ -1,5 +1,7 @@
 package com.spaceshipfreehold.tirecorrector;
 
+import android.util.Log;
+
 import java.text.ParseException;
 
 public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
@@ -17,7 +19,11 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
 
     @Override
     public void onViewCreated() {
-        // TODO Load from storage
+        if(mModel.getUnitTypeMetric(TireJoist.DEFAULT_METRIC_UNITS)){
+            mView.setDiameterInputUnitSuffix(TireJoist.METRIC_UNITS_SUFFIX);
+        } else {
+            mView.setDiameterInputUnitSuffix(TireJoist.IMPERIAL_UNITS_SUFFIX);
+        }
     }
 
     @Override
@@ -31,7 +37,7 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
     }
 
     private double getIdealRatio(double originalDiameter, double newDiameter, double originalRatio){
-        if(originalDiameter == 0){
+        if(originalDiameter <= 0 || newDiameter <= 0 || originalDiameter <= 0){
             return 0;
         } else {
             return (originalRatio * newDiameter) / originalDiameter;
@@ -39,9 +45,6 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
     }
 
     private String getIdealRatioString(double originalDiameter, double newDiameter, double originalRatio){
-        if(originalDiameter <= 0 || newDiameter <= 0 || originalDiameter <= 0){
-            return "0 : 0";
-        }
         return getIdealRatio(originalDiameter, newDiameter, originalRatio) + " : 1";
     }
 
