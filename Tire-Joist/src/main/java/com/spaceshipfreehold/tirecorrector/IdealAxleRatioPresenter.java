@@ -45,7 +45,7 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
     }
 
     private String getIdealRatioString(double originalDiameter, double newDiameter, double originalRatio){
-        return getIdealRatio(originalDiameter, newDiameter, originalRatio) + " : 1";
+        return "Ideal Ratio: " + Utils.displayifyDecimalNumber(getIdealRatio(originalDiameter, newDiameter, originalRatio), 3) + " : 1";
     }
 
     @Override
