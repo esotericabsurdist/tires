@@ -2,6 +2,7 @@ package com.spaceshipfreehold.tirecorrector;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -92,6 +93,33 @@ public class TireUtilitiesSharedPreferences {
         return Double.longBitsToDouble(rimSize);
     }
 
+    public void saveOriginalRAndPRatio(double ratio) {
+        mSharedPreferences.edit().putLong(Constants.R_AND_P_RATIO, Double.doubleToRawLongBits(ratio)).apply();
+    }
+
+    public double getOriginalRAndPRatio(double defaultRatio){
+        long ratio = mSharedPreferences.getLong(Constants.R_AND_P_RATIO, Double.doubleToRawLongBits(defaultRatio));
+        return Double.longBitsToDouble(ratio);
+    }
+
+    public void saveIdealAxleRatioNewTireDiameter(double diameter) {
+        mSharedPreferences.edit().putLong(Constants.IDEAL_AXLE_RATIO_NEW_TIRE_DIAMETER, Double.doubleToRawLongBits(diameter)).apply();
+    }
+
+    public double getIdealRatioNewTireDiameter(double defaultDiameter) {
+        long diameter = mSharedPreferences.getLong(Constants.IDEAL_AXLE_RATIO_NEW_TIRE_DIAMETER, Double.doubleToRawLongBits(defaultDiameter));
+        return Double.longBitsToDouble(diameter);
+    }
+
+    public void saveIdealAxleRatioOriginalTireDiameter(double diameter) {
+        mSharedPreferences.edit().putLong(Constants.IDEAL_AXLE_RATIO_ORIGINAL_TIRE_DIAMETER, Double.doubleToRawLongBits(diameter)).apply();
+    }
+
+    public double getIdealRatioOriginalTireDiameter(double defaultDiameter) {
+        long diameter = mSharedPreferences.getLong(Constants.IDEAL_AXLE_RATIO_ORIGINAL_TIRE_DIAMETER, Double.doubleToRawLongBits(defaultDiameter));
+        return Double.longBitsToDouble(diameter);
+    }
+
     private static class Constants {
         static String PREFERENCES_NAME = "TIRE_UTILITIES_SHARED_PREFERENCES";
         static String TAB_POSITION = "tab_position";
@@ -102,5 +130,8 @@ public class TireUtilitiesSharedPreferences {
         static String TIRE_WIDTH = "tire_width";
         static String ASPECT_RATIO = "aspect_ratio";
         static String RIM_SIZE = "rim_size";
+        static String R_AND_P_RATIO = "r_and_p_ratio";
+        static String IDEAL_AXLE_RATIO_NEW_TIRE_DIAMETER = "ideal_axle_ratio_new_tire_diameter";
+        static String IDEAL_AXLE_RATIO_ORIGINAL_TIRE_DIAMETER = "ideal_axle_ratio_original_tire_diameter";
     }
 }

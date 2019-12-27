@@ -1,16 +1,12 @@
 package com.spaceshipfreehold.tirecorrector;
 
-import android.util.Log;
-
-import java.text.ParseException;
-
 public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
 
     private IIdealAxleRatio.View mView;
     private TireUtilitiesModel mModel;
     private double mOriginalDiameter;
     private double mNewDiameter;
-    private double mOriginalRatio;
+    private double mOriginalRAndPRatio;
 
     IdealAxleRatioPresenter(TireUtilitiesModel tireUtilitiesModel, IIdealAxleRatio.View idealAxleRatioView){
         mModel = tireUtilitiesModel;
@@ -24,6 +20,23 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
         } else {
             mView.setDiameterInputUnitSuffix(TireJoist.IMPERIAL_UNITS_SUFFIX);
         }
+
+        mOriginalDiameter = mModel.getIdealRatioOriginalTireDiameter(0);
+        if(mOriginalDiameter > 0){
+            mView.setOriginalTireDiameter(String.valueOf(mOriginalDiameter));
+        }
+
+        mNewDiameter = mModel.getIdealRatioNewTireDiameter(0);
+        if(mNewDiameter > 0){
+            mView.setNewTireDiameter(String.valueOf(mNewDiameter));
+        }
+
+        mOriginalRAndPRatio = mModel.getOriginalRAndPRatio(0);
+        if(mOriginalRAndPRatio > 0){
+            mView.setOriginalRAndPRatio(String.valueOf(mOriginalRAndPRatio));
+        }
+
+        mView.setIdealRatio(getIdealRatioString(mOriginalDiameter, mNewDiameter, mOriginalRAndPRatio));
     }
 
     @Override
@@ -33,19 +46,14 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
 
     @Override
     public void onPaused() {
-        // TODO: Persist
-    }
-
-    private double getIdealRatio(double originalDiameter, double newDiameter, double originalRatio){
-        if(originalDiameter <= 0 || newDiameter <= 0 || originalDiameter <= 0){
-            return 0;
-        } else {
-            return (originalRatio * newDiameter) / originalDiameter;
-        }
+        mModel.saveIdealRatioOriginalTireDiameter(mOriginalDiameter);
+        mModel.saveIdealRatioNewTireDiameter(mNewDiameter);
+        mModel.saveOriginalRAndPRatio(mOriginalRAndPRatio);
     }
 
     private String getIdealRatioString(double originalDiameter, double newDiameter, double originalRatio){
-        return "Ideal Ratio: " + Utils.displayifyDecimalNumber(getIdealRatio(originalDiameter, newDiameter, originalRatio), 3) + " : 1";
+        double idealRatio = Utils.getIdealRatio(originalDiameter, newDiameter, originalRatio);
+        return Utils.displayifyDecimalNumber(idealRatio, 3);
     }
 
     @Override
@@ -55,7 +63,8 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
         } catch (NumberFormatException e) {
             mOriginalDiameter = 0d;
         }
-        mView.setIdealRatio(getIdealRatioString(mOriginalDiameter, mNewDiameter, mOriginalRatio));
+        mModel.saveIdealRatioOriginalTireDiameter(mOriginalDiameter);
+        mView.setIdealRatio(getIdealRatioString(mOriginalDiameter, mNewDiameter, mOriginalRAndPRatio));
     }
 
     @Override
@@ -65,16 +74,18 @@ public class IdealAxleRatioPresenter implements IIdealAxleRatio.Presenter {
         } catch (NumberFormatException e){
             mNewDiameter = 0d;
         }
-        mView.setIdealRatio(getIdealRatioString(mOriginalDiameter, mNewDiameter, mOriginalRatio));
+        mModel.saveIdealRatioNewTireDiameter(mNewDiameter);
+        mView.setIdealRatio(getIdealRatioString(mOriginalDiameter, mNewDiameter, mOriginalRAndPRatio));
     }
 
     @Override
     public void onOriginalRingAndPinionRatioEdited(String ratio) {
         try{
-            mOriginalRatio = Double.parseDouble(ratio);
+            mOriginalRAndPRatio = Double.parseDouble(ratio);
         } catch (NumberFormatException e){
-            mOriginalRatio = 0d;
+            mOriginalRAndPRatio = 0d;
         }
-        mView.setIdealRatio(getIdealRatioString(mOriginalDiameter, mNewDiameter, mOriginalRatio));
+        mModel.saveOriginalRAndPRatio(mOriginalRAndPRatio);
+        mView.setIdealRatio(getIdealRatioString(mOriginalDiameter, mNewDiameter, mOriginalRAndPRatio));
     }
 }

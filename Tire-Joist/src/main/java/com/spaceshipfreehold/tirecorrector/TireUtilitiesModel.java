@@ -94,4 +94,34 @@ public class TireUtilitiesModel implements ITireModel {
     public double getRimSize(double defaultRimSize) {
         return TireUtilitiesSharedPreferences.getInstance(mContext).getRimSize(defaultRimSize);
     }
+
+    @Override
+    public void saveOriginalRAndPRatio(double ratio) {
+        TireUtilitiesSharedPreferences.getInstance(mContext).saveOriginalRAndPRatio(ratio);
+    }
+
+    @Override
+    public double getOriginalRAndPRatio(double defaultRatio) {
+        return TireUtilitiesSharedPreferences.getInstance(mContext).getOriginalRAndPRatio(defaultRatio);
+    }
+
+    @Override
+    public void saveIdealRatioNewTireDiameter(double diameter) {
+        TireUtilitiesSharedPreferences.getInstance(mContext).saveIdealAxleRatioNewTireDiameter(diameter);
+    }
+
+    @Override
+    public double getIdealRatioNewTireDiameter(double defaultDiameter) {
+        return TireUtilitiesSharedPreferences.getInstance(mContext).getIdealRatioNewTireDiameter(defaultDiameter);
+    }
+
+    @Override
+    public void saveIdealRatioOriginalTireDiameter(double diameter) {
+        TireUtilitiesSharedPreferences.getInstance(mContext).saveIdealAxleRatioOriginalTireDiameter(diameter);
+    }
+
+    @Override
+    public double getIdealRatioOriginalTireDiameter(double defaultDiameter) {
+        return TireUtilitiesSharedPreferences.getInstance(mContext).getIdealRatioOriginalTireDiameter(defaultDiameter);
+    }
 }

@@ -12,4 +12,12 @@ public final class Utils {
         NumberFormat formatter = new DecimalFormat((Math.floor(number) == number && digitsToRightOfDecimal == 0) ? ("#0") : ("#0." + digits));
         return formatter.format(number);
     }
+
+    public static double getIdealRatio(double originalDiameter, double newDiameter, double originalRatio) {
+        if(originalDiameter <= 0 || newDiameter <= 0 || originalDiameter <= 0){
+            return 0;
+        } else {
+            return (originalRatio * newDiameter) / originalDiameter;
+        }
+    }
 }

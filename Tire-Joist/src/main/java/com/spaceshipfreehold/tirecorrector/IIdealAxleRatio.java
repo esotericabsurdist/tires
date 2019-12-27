@@ -15,6 +15,9 @@ public interface IIdealAxleRatio {
         void showToast(String message);
         void setDiameterInputUnitSuffix(String suffix);
         void setIdealRatio(String ratio);
+        void setOriginalTireDiameter(String diameter);
+        void setNewTireDiameter(String diameter);
+        void setOriginalRAndPRatio(String ratio);
     }
 
 }

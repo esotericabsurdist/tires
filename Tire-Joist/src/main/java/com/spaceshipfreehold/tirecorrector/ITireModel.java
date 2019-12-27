@@ -59,5 +59,17 @@ public interface ITireModel {
     void saveRimSize(double rimSize);
 
     double getRimSize(double defaultRimSize);
+
+    void saveOriginalRAndPRatio(double ratio);
+
+    double getOriginalRAndPRatio(double defaultRatio);
+
+    void saveIdealRatioNewTireDiameter(double diameter);
+
+    double getIdealRatioNewTireDiameter(double defaultDiameter);
+
+    void saveIdealRatioOriginalTireDiameter(double diameter);
+
+    double getIdealRatioOriginalTireDiameter(double defaultDiameter);
 }
 

@@ -64,8 +64,13 @@ public class IdealAxleRatioFragment extends TireFragment implements IIdealAxleRa
     @Override
     public void onStart() {
         super.onStart();
-
         mPresenter.onViewStarted();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mPresenter.onPaused();
     }
 
     @Override
@@ -79,11 +84,24 @@ public class IdealAxleRatioFragment extends TireFragment implements IIdealAxleRa
         mNewTireDiameterTextWatcher.setSuffix(suffix);
     }
 
-
     @Override
     public void setIdealRatio(String ratio) {
-        // TODO Prefix with "Ideal Ratio:" ? Or something descriptive
-        mIdealRingAndPinionRatioTextView.setText(ratio);
+        mIdealRingAndPinionRatioTextView.setText("Ideal Ratio: " + ratio  + " : 1");
+    }
+
+    @Override
+    public void setOriginalTireDiameter(String diameter) {
+        mOriginalDiameterEditText.setText(diameter);
+    }
+
+    @Override
+    public void setNewTireDiameter(String diameter) {
+        mNewTireDiameterEditText.setText(diameter);
+    }
+
+    @Override
+    public void setOriginalRAndPRatio(String ratio) {
+        mOriginalRingAndPinionRatioEditText.setText(ratio);
     }
 
     private class OriginalDiameterTextWatcher extends SimpleTextWatcher {
